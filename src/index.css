@@ -7,6 +7,42 @@
   margin-top: 60px;
 }
 
+.title-user {
+  background-color: rgba(255, 255, 255, 0.9); 
+  padding: 8px;
+  border-radius: 5px; 
+  display: inline-block;
+  text-align: center;
+}
+
+.title-todo {
+  background-color: rgba(255, 255, 255, 0.9); 
+  padding: 8px;
+  border-radius: 5px; 
+  display: inline-block;
+}
+
+.user-page .title-user {
+  text-align: left;
+}
+
+.user-todo .title-todo {
+  text-align: left;
+}
+
+
+.user-page form {
+text-align: center;
+}
+
+.pencarian {
+  text-align: center;
+}
+
+.user-page h1, h2 {
+  text-align: center;
+}
+
 body {
   background-image: url(bg1.jpg);
   background-repeat: no-repeat;
