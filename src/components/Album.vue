@@ -19,11 +19,12 @@
 
     <div v-if="albums.length > 0 && !loading">
       <h2>Album Details</h2>
-      <!-- Input pencarian album -->
+
       <div class="search-albums">
         <label for="searchAlbums">Cari Album:</label>
         <input type="text" v-model="searchQuery" id="searchAlbums" placeholder="Cari berdasarkan judul" class="input">
       </div>
+
       <div class="cards-container">
         <q-card v-for="album in filteredAlbums" :key="album.id" class="my-card">
           <img :src="album.thumbnailUrl" alt="Thumbnail">
@@ -37,6 +38,7 @@
             <a :href="album.url" class="url">{{ album.url }}</a>
           </q-card-section>
         </q-card>
+        
       </div>
     </div>
   </div>
@@ -52,11 +54,11 @@ export default {
   },
   data() {
     return {
-      searchType: 'albumId', // Default search type
+      searchType: 'albumId', 
       searchValue: null,
       albums: [],
       searchQuery: '',
-      loading: false // Loading state
+      loading: false
     };
   },
   computed: {
@@ -73,9 +75,9 @@ export default {
       }
     },
     async getAlbums() {
-      this.loading = true; // Set loading state to true
+      this.loading = true; 
       this.selectByAlbumId();
-      this.loading = false; // Set loading state to false after fetching
+      this.loading = false; 
     },
     selectByAlbumId() {
       this.albums = this.photos.filter(photo => photo.albumId === parseInt(this.searchValue));
@@ -127,8 +129,8 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-height: 1600px; /* Limit the height to approximately 5 rows */
-  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 1600px; 
+  overflow-y: auto; 
 }
 
 .q-pa-md {

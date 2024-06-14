@@ -55,7 +55,7 @@ export default {
     const isDialogOpen = ref(false);
     const selectedPhoto = ref({});
     const currentPage = ref(1);
-    const photosPerPage = 12; // Number of photos per page
+    const photosPerPage = 12; 
 
     const albumPhotos = computed(() => {
       return props.photos.filter(photo => photo.albumId === parseInt(albumId));
@@ -223,7 +223,7 @@ h2 {
 .photo-dialog-card {
   max-width: 90vw;
   max-height: 90vh;
-  overflow: hidden; /* Ensure no scrollbars */
+  overflow: hidden; 
 }
 
 .full-image {

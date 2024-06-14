@@ -2,7 +2,7 @@
   <q-page padding>
     <div class="container">
       <h1>Daftar Kegiatan Yang Akan Dilakukan</h1>
-      <p>{{ propertiContoh }}</p> <!-- Properti yang ditampilkan -->
+      <p>{{ propertiContoh }}</p>
       <q-input v-model="tambahName" label="Tambah Catatan baru" @keyup.enter="buttonEnter" outlined></q-input>
       <q-btn @click="buttonEnter" label="Tambah" color="primary" class="q-mt-sm"></q-btn>
 

@@ -33,12 +33,10 @@
           <h2 class="text-h6">Postingan oleh {{ selectedUserName }} (ID: {{ selectedUserId }})</h2>
         </q-card-section>
 
-        <!-- Input pencarian postingan -->
         <q-card-section class="search-posts">
           <label for="searchPosts">Cari Postingan:</label>
           <input type="text" v-model="searchQuery" id="searchPosts" placeholder="Cari berdasarkan judul atau isi" class="input">
         </q-card-section>
-
         <q-separator />
 
         <div class="post-list">
@@ -59,7 +57,7 @@
 
 <script>
 import { defineComponent, ref, computed } from 'vue';
-import { useUserStore } from '../stores/userStore'; // Import Pinia store
+import { useUserStore } from '../stores/userStore'; 
 
 export default defineComponent({
   props: {
@@ -69,19 +67,16 @@ export default defineComponent({
     }
   },
 
-  setup(props) { // Menerima props sebagai parameter setup
+  setup(props) { 
     const userStore = useUserStore();
-
-    // Component data
-    const searchType = ref('name'); // Default search type
+    const searchType = ref('name');
     const searchValue = ref('');
     const userPosts = ref([]);
     const searchQuery = ref('');
     const selectedUserId = ref(null);
     const selectedUserName = ref('');
-    const loading = ref(false); // Loading state
+    const loading = ref(false); 
 
-    // Method to fetch user posts
     const fetchUserPosts = async (userId) => {
       loading.value = true;
       try {
@@ -94,31 +89,28 @@ export default defineComponent({
       }
     };
 
-    // Method to select user by name
     const selectUserByName = () => {
-      const selectedUser = props.users.find(user => user.name.toLowerCase() === searchValue.value.toLowerCase()); // Menggunakan props.users
+      const selectedUser = props.users.find(user => user.name.toLowerCase() === searchValue.value.toLowerCase()); 
       if (selectedUser) {
         selectedUserId.value = selectedUser.id;
         selectedUserName.value = selectedUser.name;
         fetchUserPosts(selectedUser.id);
       } else {
-        // Handle case when user not found
+       
       }
     };
 
-    // Method to select user by ID
     const selectUserById = () => {
-      const selectedUser = props.users.find(user => user.id === parseInt(searchValue.value)); // Menggunakan props.users
+      const selectedUser = props.users.find(user => user.id === parseInt(searchValue.value)); 
       if (selectedUser) {
         selectedUserId.value = selectedUser.id;
         selectedUserName.value = selectedUser.name;
         fetchUserPosts(selectedUser.id);
       } else {
-        // Handle case when user not found
+       
       }
     };
 
-    // Method to get user posts
     const getUserPosts = () => {
       if (searchType.value === 'name') {
         selectUserByName();
@@ -127,7 +119,6 @@ export default defineComponent({
       }
     };
 
-    // Computed property for filtered posts
     const filteredPosts = computed(() => {
       return userPosts.value.filter(post =>
         post.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
@@ -135,7 +126,6 @@ export default defineComponent({
       );
     });
 
-    // Return data, computed properties, and methods
     return {
       searchType,
       searchValue,
@@ -156,14 +146,13 @@ export default defineComponent({
   padding: 20px;
 }
 
-
 .post-container {
   display: flex;
   justify-content: center;
 }
 
 .post-card-container {
-  max-width: 600px; /* Sesuaikan dengan lebar yang diinginkan */
+  max-width: 600px; 
   background-color: rgba(255, 255, 255, 0.326);
 }
 
@@ -172,8 +161,8 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-height: 500px; /* Fixed height for the scrollable container */
-  overflow-y: auto; /* Enables vertical scrolling */
+  max-height: 500px; 
+  overflow-y: auto; 
 }
 
 .post-card {
@@ -241,7 +230,7 @@ export default defineComponent({
   margin-top: 0;
   margin-bottom: 10px;
   color: #333;
-  font-size: 1.25em; /* 20px */
+  font-size: 1.25em; 
 }
 
 .card p {
@@ -249,7 +238,7 @@ export default defineComponent({
 }
 
 h2 {
-  font-size: 1.5em; /* 24px */
+  font-size: 1.5em; 
 }
 
 .my-card {
@@ -257,7 +246,7 @@ h2 {
 }
 
 .text-h6 {
-  font-size: 1.25rem; /* Ukuran font untuk text-h6 */
+  font-size: 1.25rem; 
 }
 
 .input {

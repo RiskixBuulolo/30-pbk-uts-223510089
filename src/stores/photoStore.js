@@ -1,5 +1,3 @@
-// stores/photoStore.js
-
 import { defineStore } from 'pinia'
 
 export const usePhotoStore = defineStore('photo', {
